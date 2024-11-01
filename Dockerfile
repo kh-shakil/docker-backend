@@ -4,10 +4,12 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN yarn
+RUN npm install
 
 COPY . .
 
+# VOLUME ["/app/logs"]
+
 EXPOSE 5000
 
-CMD [ "yarn", "dev" ]
+CMD ["npm", "run", "dev"]
