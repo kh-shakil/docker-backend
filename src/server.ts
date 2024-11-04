@@ -1,39 +1,43 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
-import { Server } from 'http'
-import app from './app'
-import config from './config/index'
-
+import { Server } from "http";
+import mongoose from "mongoose";
+import app from "./app";
+import config from "./app/config";
+import { errorlogger, logger } from "./app/src/shared/logger";
 
 let server: Server;
 
-async function bootstrap() {
+async function main() {
   try {
-    server = app.listen(config.port, () => {
-      console.log(`Application  listening on port ${config.port}`)
-    })
-  } catch (err) {
-    console.error('Failed to connect database', err)
-  }
+    await mongoose.connect(config.database_url as string);
 
+    logger.info("Connected to database");
+
+
+    server = app.listen(process.env.PORT, () => {
+      console.log(`app is listening on port ${process.env.PORT}`);
+      logger.info(`app is listening on port ${process.env.PORT}`);
+    });
+  } catch (err) {
+    console.log(err);
+    errorlogger.error(err);
+  }
 }
 
-bootstrap()
+main();
 
 process.on("unhandledRejection", (err) => {
-  console.log("unhandledRejectin is deleted, shutting down...", err);
-
+  console.log(`😈 unahandledRejection is detected , shutting down ...`, err);
+  errorlogger.error(err);
   if (server) {
     server.close(() => {
       process.exit(1);
     });
   }
-
   process.exit(1);
 });
 
 process.on("uncaughtException", () => {
-  console.log("uncaughtException is detected, shutting down...");
-
+  console.log(`😈 uncaughtException is detected , shutting down ...`);
+  errorlogger.error("uncaughtException is detected");
   process.exit(1);
-})
+});

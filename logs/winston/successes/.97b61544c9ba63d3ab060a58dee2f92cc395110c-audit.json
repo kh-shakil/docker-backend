@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\docker\\docker-backend\\logs\\winston\\successes\\.97b61544c9ba63d3ab060a58dee2f92cc395110c-audit.json",
+    "files": [
+        {
+            "date": 1730601563779,
+            "name": "D:\\docker\\docker-backend\\logs\\winston\\successes\\docker-2024-11-03-08-39-23-success.log",
+            "hash": "a615ea75d67f18fdddf6fd57e84cc31d55a2bd78b281d697021103e58283df9a"
+        },
+        {
+            "date": 1730601587257,
+            "name": "D:\\docker\\docker-backend\\logs\\winston\\successes\\docker-2024-11-03-08-39-47-success.log",
+            "hash": "2b0d53331b888f8c970495f697a6c3906c6e21a4fb27f0f177ea32de3bd0beb5"
+        },
+        {
+            "date": 1730602229622,
+            "name": "D:\\docker\\docker-backend\\logs\\winston\\successes\\docker-2024-11-03-08-50-29-success.log",
+            "hash": "39f725cd01d5aa565eeaf000d4efec8be347fe63d9bf787cc0340227b50e705f"
+        }
+    ],
+    "hashType": "sha256"
+}
