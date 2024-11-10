@@ -1,0 +1,3 @@
+docker run --name node-util -w //app -v "//$(pwd)"://app -it --rm -d node-util
+
+docker exec -it node-util npm install express
